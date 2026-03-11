@@ -14,19 +14,28 @@ export function RowCounter({
   onReset,
 }: RowCounterProps) {
   return (
-    <section className="row-counter">
-      <h1 className="app-title">Knitting Row Counter</h1>
-      <div className="row-display" aria-label={`Current row ${state.currentRow}`}>
+    <section className="row-counter" aria-label="Row counter">
+      <div className="row-display" aria-live="polite" aria-label={`Current row ${state.currentRow}`}>
         {state.currentRow}
       </div>
       <div className="row-controls">
-        <button type="button" onClick={onDecrement} disabled={state.currentRow === 0}>
+        <button
+          type="button"
+          onClick={onDecrement}
+          disabled={state.currentRow === 0}
+          aria-label="Decrease row"
+        >
           -1
         </button>
-        <button type="button" onClick={onIncrement}>
+        <button type="button" onClick={onIncrement} aria-label="Increase row">
           +1
         </button>
-        <button type="button" onClick={onReset} disabled={state.currentRow === 0}>
+        <button
+          type="button"
+          onClick={onReset}
+          disabled={state.currentRow === 0}
+          aria-label="Reset counter"
+        >
           Reset
         </button>
       </div>
